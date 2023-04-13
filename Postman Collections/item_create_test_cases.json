@@ -65,7 +65,7 @@
 					"script": {
 						"id": "5ee86272-560d-495a-a1ff-ca93d948c6f7",
 						"exec": [
-							"//create a new item",
+							"//create a new item successfully",
 							"pm.test(\"Status code is 201\", function () {",
 							"    pm.response.to.have.status(201);",
 							"    pm.environment.set(\"item_uuid\", pm.response.json())",
@@ -109,7 +109,9 @@
 				{
 					"listen": "test",
 					"script": {
+						"id": "09a85bf2-fe94-4d24-a8c5-11c05b1b8c3e",
 						"exec": [
+							"//Get item by the unique id",
 							"pm.test(\"Status code is 200\", function () {",
 							"    pm.response.to.have.status(200);",
 							"",
@@ -122,18 +124,17 @@
 							"",
 							""
 						],
-						"type": "text/javascript",
-						"id": "09a85bf2-fe94-4d24-a8c5-11c05b1b8c3e"
+						"type": "text/javascript"
 					}
 				},
 				{
 					"listen": "prerequest",
 					"script": {
+						"id": "b85b98e8-e6f7-4c95-940a-33ca63ed8270",
 						"exec": [
 							"console.log(\"{{description}}\");"
 						],
-						"type": "text/javascript",
-						"id": "b85b98e8-e6f7-4c95-940a-33ca63ed8270"
+						"type": "text/javascript"
 					}
 				}
 			],
@@ -211,7 +212,9 @@
 				{
 					"listen": "test",
 					"script": {
+						"id": "e3d079c1-0339-49d8-8a7d-a708f096b638",
 						"exec": [
+							"//Adding an item with empty description",
 							"pm.test(\"Status code is 400\", function () {",
 							"    pm.response.to.have.status(400);",
 							"});",
@@ -221,8 +224,7 @@
 							"    pm.expect(jsonData.errors.Description[0]).to.eql(\"Description field can not be empty\");",
 							"});"
 						],
-						"type": "text/javascript",
-						"id": "e3d079c1-0339-49d8-8a7d-a708f096b638"
+						"type": "text/javascript"
 					}
 				}
 			],
@@ -358,19 +360,19 @@
 	],
 	"variable": [
 		{
-			"id": "1e6139fa-6a7b-43f1-b9df-05b581a91706",
+			"id": "fdc5d2fa-11f6-482f-bc8b-3b5e5ffbeb2c",
 			"key": "description",
 			"value": "",
 			"type": "string"
 		},
 		{
-			"id": "70018a50-9784-48d8-91f4-371cfd80f30f",
+			"id": "cfbd611f-0990-4a1d-9465-a34174620c06",
 			"key": "item_uuid",
 			"value": "",
 			"type": "string"
 		},
 		{
-			"id": "3a272cc3-ba70-45aa-a512-b0cebb99c621",
+			"id": "1e16ae4f-d30a-47d0-928b-fdfc78cd31a5",
 			"key": "total_items_count",
 			"value": "",
 			"type": "string"
