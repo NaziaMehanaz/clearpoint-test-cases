@@ -65,7 +65,7 @@
 					"script": {
 						"id": "5ee86272-560d-495a-a1ff-ca93d948c6f7",
 						"exec": [
-							"//create a new item",
+							"//create a new item successfully",
 							"pm.test(\"Status code is 201\", function () {",
 							"    pm.response.to.have.status(201);",
 							"    pm.environment.set(\"item_uuid\", pm.response.json())",
@@ -260,13 +260,14 @@
 				{
 					"listen": "test",
 					"script": {
+						"id": "c8621f67-2b36-44da-95df-5b3517ef7af8",
 						"exec": [
+							"// getting an item with unique Id that doesn't exist",
 							"pm.test(\"Status code is 404\", function () {",
 							"    pm.response.to.have.status(404);",
 							"});"
 						],
-						"type": "text/javascript",
-						"id": "c8621f67-2b36-44da-95df-5b3517ef7af8"
+						"type": "text/javascript"
 					}
 				}
 			],
@@ -360,19 +361,19 @@
 	],
 	"variable": [
 		{
-			"id": "ca365bdc-ea8e-4c23-8ea2-8dd764cf65da",
+			"id": "facea14d-edaa-4171-84ce-e5025b99058c",
 			"key": "description",
 			"value": "",
 			"type": "string"
 		},
 		{
-			"id": "df58d953-072b-4ed0-a30a-7039612b7f18",
+			"id": "bba08b6d-e73b-427c-a146-6df1683f947f",
 			"key": "item_uuid",
 			"value": "",
 			"type": "string"
 		},
 		{
-			"id": "64807fbb-c468-4f0f-8761-5b98226654df",
+			"id": "2098e831-7c22-4d68-9526-4ad1a6869336",
 			"key": "total_items_count",
 			"value": "",
 			"type": "string"
