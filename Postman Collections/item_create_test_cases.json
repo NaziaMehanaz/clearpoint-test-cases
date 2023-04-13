@@ -1,0 +1,381 @@
+{
+	"info": {
+		"_postman_id": "220786ae-166d-4ff6-b382-327cf17345f4",
+		"name": "item_create_test_cases",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "1. list_all_items_intial_200",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "77aa933b-e1f0-4058-9ccb-a77c5e70d239",
+						"exec": [
+							"// comments",
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"    pm.environment.set(\"total_items_count\", Object.keys(pm.response.json()).length);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"_postman_id": "0fb61d06-cbef-4e47-8fb5-81cd31b4d47c",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": "http://{{ip}}:{{port}}/api/todoItems"
+			},
+			"response": []
+		},
+		{
+			"name": "2. create_item_201",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"var uuid = require('uuid');",
+							"var myUUID = uuid.v4();",
+							"postman.setEnvironmentVariable(\"description\", \"Item added via postman \" + myUUID);"
+						],
+						"type": "text/javascript",
+						"id": "0c392ad0-5b63-4a16-b66c-9b6df4b15f1a"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 201\", function () {",
+							"    pm.response.to.have.status(201);",
+							"    pm.environment.set(\"item_uuid\", pm.response.json())",
+							"});",
+							"",
+							""
+						],
+						"type": "text/javascript",
+						"id": "5ee86272-560d-495a-a1ff-ca93d948c6f7"
+					}
+				}
+			],
+			"_postman_id": "9c8f9581-30df-4199-afba-8a99e6739a11",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"description\": \"{{description}}\"\n}",
+					"options": {}
+				},
+				"url": "http://{{ip}}:{{port}}/api/todoItems"
+			},
+			"response": []
+		},
+		{
+			"name": "3. get_item_by_uuid_200",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"",
+							"});",
+							"",
+							"pm.test(\"Body matches string\", function () {",
+							"        pm.expect(pm.response.json().description).to.eq(pm.environment.get(\"description\"));",
+							"    });",
+							"",
+							"",
+							""
+						],
+						"type": "text/javascript",
+						"id": "09a85bf2-fe94-4d24-a8c5-11c05b1b8c3e"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"console.log(\"{{description}}\");"
+						],
+						"type": "text/javascript",
+						"id": "b85b98e8-e6f7-4c95-940a-33ca63ed8270"
+					}
+				}
+			],
+			"_postman_id": "0cafefe4-cb48-4848-b7d1-8d72f4c8d62d",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": "http://{{ip}}:{{port}}/api/todoItems/{{item_uuid}}"
+			},
+			"response": []
+		},
+		{
+			"name": "4. create_item_409",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 409\", function () {",
+							"    pm.response.to.have.status(409);",
+							"});",
+							"",
+							"pm.test(\"Body matches string\", function () {",
+							"    pm.expect(pm.response.json()).to.include(\"A todo item with description already exists\");",
+							"});"
+						],
+						"type": "text/javascript",
+						"id": "48ee771f-12b3-47e5-8601-6395ef88b6f2"
+					}
+				}
+			],
+			"_postman_id": "e0b5e2e1-f90c-4aa9-a5d0-53148671b327",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"description\": \"{{description}}\"\n}",
+					"options": {}
+				},
+				"url": "http://{{ip}}:{{port}}/api/todoItems"
+			},
+			"response": []
+		},
+		{
+			"name": "5. create_item_400",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 400\", function () {",
+							"    pm.response.to.have.status(400);",
+							"});",
+							"",
+							"pm.test(\"Description cannot be blank\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.errors.Description[0]).to.eql(\"Description field can not be empty\");",
+							"});"
+						],
+						"type": "text/javascript",
+						"id": "e3d079c1-0339-49d8-8a7d-a708f096b638"
+					}
+				}
+			],
+			"_postman_id": "6f92bf9d-5fff-437d-a6c3-cb2c8754f9bd",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"description\": \"\"\n}",
+					"options": {}
+				},
+				"url": "http://{{ip}}:{{port}}/api/todoItems"
+			},
+			"response": []
+		},
+		{
+			"name": "6. get_item_by_uuid_404",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {",
+							"    pm.response.to.have.status(404);",
+							"});"
+						],
+						"type": "text/javascript",
+						"id": "c8621f67-2b36-44da-95df-5b3517ef7af8"
+					}
+				}
+			],
+			"_postman_id": "01661e8e-b8f1-4fa4-86d9-61e22be10f04",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Content-Transfer-Encoding",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": "http://localhost:3002/api/todoItems/2ade20d3-1452-4e39-8df2"
+			},
+			"response": []
+		},
+		{
+			"name": "7. list_all_items_final_200",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"",
+							"});",
+							"",
+							"pm.test(\"Assert correct items returned\", function () {",
+							"    pm.expect(Object.keys(pm.response.json()).length).to.eql(pm.environment.get(\"total_items_count\") + 1);",
+							"});"
+						],
+						"type": "text/javascript",
+						"id": "3c9fe1fb-df8e-4e9f-90db-5ca47788e43f"
+					}
+				}
+			],
+			"_postman_id": "0e893cd9-b3b2-4d99-bb61-b83a4ec38c43",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": "http://{{ip}}:{{port}}/api/todoItems"
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				],
+				"id": "4755ba04-7fda-4e7d-800c-7c88a8c15af5"
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				],
+				"id": "61c5ea59-285f-46ed-b98f-2fbf47989743"
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "d8b7da69-a8d6-4af3-a24a-cd1b22408211",
+			"key": "description",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"id": "e322e063-6000-467a-88fe-e765421b7248",
+			"key": "item_uuid",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"id": "8c0cad51-5ab6-408b-8c36-380aaf211cf9",
+			"key": "total_items_count",
+			"value": "",
+			"type": "string"
+		}
+	]
+}
