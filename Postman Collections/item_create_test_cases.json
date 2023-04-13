@@ -299,7 +299,9 @@
 				{
 					"listen": "test",
 					"script": {
+						"id": "3c9fe1fb-df8e-4e9f-90db-5ca47788e43f",
 						"exec": [
+							"// List all the items again and verify if it has been incremented by 1 since the initial check in Test #1",
 							"pm.test(\"Status code is 200\", function () {",
 							"    pm.response.to.have.status(200);",
 							"",
@@ -309,8 +311,7 @@
 							"    pm.expect(Object.keys(pm.response.json()).length).to.eql(pm.environment.get(\"total_items_count\") + 1);",
 							"});"
 						],
-						"type": "text/javascript",
-						"id": "3c9fe1fb-df8e-4e9f-90db-5ca47788e43f"
+						"type": "text/javascript"
 					}
 				}
 			],
@@ -361,19 +362,19 @@
 	],
 	"variable": [
 		{
-			"id": "facea14d-edaa-4171-84ce-e5025b99058c",
+			"id": "16e8ab67-a0c5-4d44-9969-9566c6d6ffe8",
 			"key": "description",
 			"value": "",
 			"type": "string"
 		},
 		{
-			"id": "bba08b6d-e73b-427c-a146-6df1683f947f",
+			"id": "50e25595-a1b6-4483-9ad1-cf6c1d10a23a",
 			"key": "item_uuid",
 			"value": "",
 			"type": "string"
 		},
 		{
-			"id": "2098e831-7c22-4d68-9526-4ad1a6869336",
+			"id": "5226c0b1-0843-4878-9be7-fbd8625e3754",
 			"key": "total_items_count",
 			"value": "",
 			"type": "string"
