@@ -13,7 +13,7 @@
 					"script": {
 						"id": "77aa933b-e1f0-4058-9ccb-a77c5e70d239",
 						"exec": [
-							"// comments",
+							"// List all the items",
 							"pm.test(\"Status code is 200\", function () {",
 							"    pm.response.to.have.status(200);",
 							"    pm.environment.set(\"total_items_count\", Object.keys(pm.response.json()).length);",
@@ -23,7 +23,7 @@
 					}
 				}
 			],
-			"_postman_id": "0fb61d06-cbef-4e47-8fb5-81cd31b4d47c",
+			"id": "0fb61d06-cbef-4e47-8fb5-81cd31b4d47c",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
@@ -76,7 +76,7 @@
 					}
 				}
 			],
-			"_postman_id": "9c8f9581-30df-4199-afba-8a99e6739a11",
+			"id": "9c8f9581-30df-4199-afba-8a99e6739a11",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
@@ -96,8 +96,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n  \"description\": \"{{description}}\"\n}",
-					"options": {}
+					"raw": "{\n  \"description\": \"{{description}}\"\n}"
 				},
 				"url": "http://{{ip}}:{{port}}/api/todoItems"
 			},
@@ -137,7 +136,7 @@
 					}
 				}
 			],
-			"_postman_id": "0cafefe4-cb48-4848-b7d1-8d72f4c8d62d",
+			"id": "0cafefe4-cb48-4848-b7d1-8d72f4c8d62d",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
@@ -179,7 +178,7 @@
 					}
 				}
 			],
-			"_postman_id": "e0b5e2e1-f90c-4aa9-a5d0-53148671b327",
+			"id": "e0b5e2e1-f90c-4aa9-a5d0-53148671b327",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
@@ -199,8 +198,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n  \"description\": \"{{description}}\"\n}",
-					"options": {}
+					"raw": "{\n  \"description\": \"{{description}}\"\n}"
 				},
 				"url": "http://{{ip}}:{{port}}/api/todoItems"
 			},
@@ -227,7 +225,7 @@
 					}
 				}
 			],
-			"_postman_id": "6f92bf9d-5fff-437d-a6c3-cb2c8754f9bd",
+			"id": "6f92bf9d-5fff-437d-a6c3-cb2c8754f9bd",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
@@ -247,8 +245,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n  \"description\": \"\"\n}",
-					"options": {}
+					"raw": "{\n  \"description\": \"\"\n}"
 				},
 				"url": "http://{{ip}}:{{port}}/api/todoItems"
 			},
@@ -270,7 +267,7 @@
 					}
 				}
 			],
-			"_postman_id": "01661e8e-b8f1-4fa4-86d9-61e22be10f04",
+			"id": "01661e8e-b8f1-4fa4-86d9-61e22be10f04",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
@@ -313,7 +310,7 @@
 					}
 				}
 			],
-			"_postman_id": "0e893cd9-b3b2-4d99-bb61-b83a4ec38c43",
+			"id": "0e893cd9-b3b2-4d99-bb61-b83a4ec38c43",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
@@ -360,19 +357,19 @@
 	],
 	"variable": [
 		{
-			"id": "d8b7da69-a8d6-4af3-a24a-cd1b22408211",
+			"id": "efa24155-f1a5-48ac-9320-1b2093e1c195",
 			"key": "description",
 			"value": "",
 			"type": "string"
 		},
 		{
-			"id": "e322e063-6000-467a-88fe-e765421b7248",
+			"id": "1fd37b3f-e9c0-4f1f-be44-bc90235ebcc6",
 			"key": "item_uuid",
 			"value": "",
 			"type": "string"
 		},
 		{
-			"id": "8c0cad51-5ab6-408b-8c36-380aaf211cf9",
+			"id": "2a9c52e2-d967-4957-8569-110c6c76a35f",
 			"key": "total_items_count",
 			"value": "",
 			"type": "string"
