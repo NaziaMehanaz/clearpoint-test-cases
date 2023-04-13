@@ -51,19 +51,21 @@
 				{
 					"listen": "prerequest",
 					"script": {
+						"id": "0c392ad0-5b63-4a16-b66c-9b6df4b15f1a",
 						"exec": [
 							"var uuid = require('uuid');",
 							"var myUUID = uuid.v4();",
 							"postman.setEnvironmentVariable(\"description\", \"Item added via postman \" + myUUID);"
 						],
-						"type": "text/javascript",
-						"id": "0c392ad0-5b63-4a16-b66c-9b6df4b15f1a"
+						"type": "text/javascript"
 					}
 				},
 				{
 					"listen": "test",
 					"script": {
+						"id": "5ee86272-560d-495a-a1ff-ca93d948c6f7",
 						"exec": [
+							"//create a new item",
 							"pm.test(\"Status code is 201\", function () {",
 							"    pm.response.to.have.status(201);",
 							"    pm.environment.set(\"item_uuid\", pm.response.json())",
@@ -71,8 +73,7 @@
 							"",
 							""
 						],
-						"type": "text/javascript",
-						"id": "5ee86272-560d-495a-a1ff-ca93d948c6f7"
+						"type": "text/javascript"
 					}
 				}
 			],
@@ -357,19 +358,19 @@
 	],
 	"variable": [
 		{
-			"id": "efa24155-f1a5-48ac-9320-1b2093e1c195",
+			"id": "1e6139fa-6a7b-43f1-b9df-05b581a91706",
 			"key": "description",
 			"value": "",
 			"type": "string"
 		},
 		{
-			"id": "1fd37b3f-e9c0-4f1f-be44-bc90235ebcc6",
+			"id": "70018a50-9784-48d8-91f4-371cfd80f30f",
 			"key": "item_uuid",
 			"value": "",
 			"type": "string"
 		},
 		{
-			"id": "2a9c52e2-d967-4957-8569-110c6c76a35f",
+			"id": "3a272cc3-ba70-45aa-a512-b0cebb99c621",
 			"key": "total_items_count",
 			"value": "",
 			"type": "string"
