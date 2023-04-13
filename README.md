@@ -1,4 +1,9 @@
 # clearpoint-test-cases
+Pre Requisite:
+
+Docker Installed, PostMan Client Installed and Git Hub account 
+
+Environment Variables set for Host and Port
 
 Test case summary:
 
@@ -27,3 +32,6 @@ What failure scenarios we tested:
 1. Item creation bad request (400) where we called POST without item description 
 2. Item creation conflict (409) by posting the request with same item description as used at the time of successful creation of item api call
 3. Fetch item by a random (possibly invalid uuid) and get not found 404
+
+Execute the tests:
+Right Click on the Collection and Click run collection and click Run Click_item_create_testcases
